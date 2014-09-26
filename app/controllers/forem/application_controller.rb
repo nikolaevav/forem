@@ -1,7 +1,9 @@
 require 'cancan'
 
-class Forem::ApplicationController < ApplicationController
-  layout Forem.layout
+class Forem::ApplicationController < Spree::StoreController
+
+  helper 'spree/products'
+  layout :determine_layout
   
   rescue_from CanCan::AccessDenied do
     redirect_to root_path, :alert => t("forem.access_denied")
@@ -24,6 +26,11 @@ class Forem::ApplicationController < ApplicationController
   helper_method :pagination_param
 
   private
+
+  def determine_layout
+    return @page.layout if @page and @page.layout.present? and not @page.render_layout_as_partial?
+    Spree::Config.layout
+  end
 
   def authenticate_forem_user
     if !forem_user
