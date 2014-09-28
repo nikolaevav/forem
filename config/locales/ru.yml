@@ -104,10 +104,11 @@ ru:
         none: Отсутствует
     topic:
       headings:
-        topic: Тема
+        topic: Темы форума
         latest: Последняя
-        posts: Ответы
-        views: Просмотры
+        posts: Ответов
+        views: Просмотров
+        author: Автор темы
       moderation:
         success: Выбранная тема была отмодерирована.
         no_option_selected: Не выбрано ни одного варианта для модерирования.

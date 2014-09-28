@@ -1,15 +1,19 @@
 <div class='forum'>
   <%= render :partial => 'forem/forums/head', :locals => { :forum => @forum } %>
 
-  <%= forem_pages_widget(@topics) %>
-  <table class='topics table-striped table' cellspacing='0'>
+<div class="forum-horizontal-line"></div>
+
+<!--Вывод пагинации сверху-->
+  <!--<%= forem_pages_widget(@topics) %>-->
+  <table class='topics table-striped table' cellspacing='0' style="width: 100%; margin-top: 35px;">
     <thead>
-      <tr>
-        <th class="icon"></th>
-        <th class="byline"><%= t('forem.topic.headings.topic') -%></th>
-        <th class="latest-post text-center"><%= t('forem.topic.headings.latest') -%></th>
-        <th class="posts-count text-center"><%= t('forem.topic.headings.posts') -%></th>
-        <th class="views-count text-center"><%= t('forem.topic.headings.views') -%></th>
+      <tr style="border-bottom: 1px solid #bcbcbc">
+        <th class="row-icon"></th>
+        <th class="byline table-titles" style="text-align: left;width: 550px;"><%= t('forem.topic.headings.topic') -%></th>
+        <!--<th class="latest-post text-center table-titles"><%= t('forem.topic.headings.latest') -%></th>-->
+        <th class="posts-count text-center table-titles"><%= t('forem.topic.headings.posts') -%></th>
+        <th class="views-count text-center table-titles"><%= t('forem.topic.headings.views') -%></th>
+        <th class="views-count text-center table-titles"><%= t('forem.topic.headings.author') -%></th>
       </tr>
     </thead>
     <tbody>

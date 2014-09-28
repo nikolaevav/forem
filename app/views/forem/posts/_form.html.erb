@@ -1,5 +1,18 @@
-<%= f.input :text, :input_html => { :class => "field col-md-12" } %>
+<%= f.text_area :text, :class => "field col-md-12 jqte-test" %>
 
 <% if params[:reply_to_id] %>
   <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
 <% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+    $('.jqte-test').jqte();
+
+    // settings of status
+    var jqteStatus = true;
+    $(".status").click(function()
+    {
+        jqteStatus = jqteStatus ? false : true;
+        $('.jqte-test').jqte({"status" : jqteStatus})
+    });
+</script>

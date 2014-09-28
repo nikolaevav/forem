@@ -1,17 +1,26 @@
 <div id='forum'>
-  <h2><%= link_to t('forem.forum.forums'), forem.root_path %> &raquo; <%= link_to forem_emojify(forum.category), [forem, forum.category] %> &raquo; <%= link_to forem_emojify(forum.title), [forem, forum] %></h2>
-  <span id='description'><%= forem_format(forum.description) %></span>
+  <!-- BREADCRUMBS -->
+  <!--<h2><%= link_to t('forem.forum.forums'), forem.root_path %> &raquo; <%= link_to forem_emojify(forum.category), [forem, forum.category] %> &raquo; <%= link_to forem_emojify(forum.title), [forem, forum] %></h2>-->
+
   <div id='forum_topic_links' class='btn-group'>
+    <div class="forum-name">
+      <%= link_to forem_emojify(forum.title)%>
+    </div>
+    <span id='forum-description' class="forum-description-left forum-description" style="color: #9b9b9b;font-size:.8em;"><%= forem_format(forum.description) %></span>
+    <% if can? :moderate, @forum %>
+        <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), :class => "btn btn-primary just-button", :style=>'width:250px;' %>
+    <% end %>
+
+    <!--Кнопка создать новую тему-->
     <% unless @topic.try(:new_record?) %>
       <% if can? :create_topic, @forum %>
-        <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), :class => "btn btn-primary", :id => "new-topic" %>
+        <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), :class => "btn btn-primary button-new-topic", :id => "new-topic" %>
       <% end %>
     <% end %>
+
     <% if @topic %>
-      <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), :class => "btn" %>
+      <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), :class => "btn just-button", :style=>"width:200px;" %>
     <% end %>
-    <% if can? :moderate, @forum %>
-      <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), :class => "btn btn-primary" %>
-    <% end %>
+
   </div>
 </div>
