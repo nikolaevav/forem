@@ -1,17 +1,17 @@
-<fieldset>
+<fieldset style="border:1px dotted #d3d1d1; border-radius: 5px;">
 <legend><span class="legend-title"><%= t("forem.topic.new") %></span></legend>
 <%= simple_form_for [forem, @forum, @topic] do |f| %>
 
-    <%= f.text_field :subject, :class => "topic-name-input", :placeholder=>t("forem.general.topic"), :style=>"height: 31px;font-size: 1.2em;" %>
+    <%= f.text_field :subject, :required=>"required", :class => "topic-name-input required", :placeholder=>t("forem.general.topic"), :style=>"height: 31px;font-size: 1.2em;" %>
 
 
     <%= f.simple_fields_for :posts do |post| %>
     <%= render :partial => "forem/posts/form", :locals => { :f => post }%>
   <% end %>
 
-      <div style="text-align: center;">
-  <%= f.submit :class => "btn btn-primary review-submit-button", :style=>"float:none; border-radius:5px; width:150px;" %>
-          </div>
+  <div style="text-align: center;">
+    <%= f.submit :class => "btn btn-primary review-submit-button", :style=>"float:none; border-radius:5px; width:150px;" %>
+  </div>
 <% end %>
 
   </fieldset>
