@@ -1,15 +1,21 @@
 <%= render :partial => 'forem/forums/head', :locals => { :forum => @topic.forum } %>
 
-<h2>
-  <%= t("forem.post.new") %>
-  <% if @reply_to_post %>
-    <%= render 'reply_to_post', :post => @reply_to_post %>
-  <% else %>
-    <em><%= @topic.subject %></em>
-  <% end %>
-</h2>
+<div class="forum-horizontal-line"></div>
 
-<%= simple_form_for [forem, @topic.forum, @topic, @post] do |f| %>
-  <%= render :partial => "form", :locals => { :f => f } %>
-  <%= f.submit t("forem.post.buttons.reply"), :class => "btn btn-primary" %>
-<% end %>
+<div style="margin-top: 35px;">
+    <span class="reply-topic-title">
+      <%= t("forem.post.new") %>
+      <% if @reply_to_post %>
+        <%= render 'reply_to_post', :post => @reply_to_post %>
+      <% else %>
+        <em>"<%= @topic.subject %>"</em>
+      <% end %>
+    </span>
+
+    <%= simple_form_for [forem, @topic.forum, @topic, @post] do |f| %>
+      <%= render :partial => "form", :locals => { :f => f } %>
+      <div style="text-align: center;">
+        <%= f.submit t("forem.post.buttons.reply"), :class => "btn btn-primary review-submit-button" , :style=>"float:none; border-radius:5px; width:200px;"%>
+      </div>
+    <% end %>
+</div>

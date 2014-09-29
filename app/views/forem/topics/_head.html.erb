@@ -1,1 +1,28 @@
-<h2><%= link_to t('forem.forum.forums'), forem.forums_path %> &raquo; <%= link_to forem_emojify(topic.forum.title), [forem, topic.forum] %> &raquo; <%= forem_emojify(topic.subject) %></h2>
+<div style="width: 100%; height: 40px; margin-bottom: 8px;">
+  <div style="float: right;">
+    <!--Кнопка ответа на тему-->
+    <% if @topic.can_be_replied_to? && can?(:reply, @topic) %>
+        <%= link_to t("forem.topics.show.reply"), forem.new_forum_topic_post_path(@forum, @topic), :class => "btn btn-primary just-button " %>
+    <% end %>
+
+    <!--Кнопка удаления темы-->
+    <% if @topic.user == forem_user || forem_admin? %>
+        <%= link_to t("forem.topics.show.delete"), forem.forum_topic_path(@forum, @topic), :method => :delete, data: { :confirm => t("are_you_sure") }, :class => "btn btn-danger just-button" %>
+    <% end %>
+    <!--Кнопка подписки\отписки-->
+    <% if forem_user %>
+        <% if !@topic.subscriber?(forem_user.id) %>
+            <%= link_to t("forem.topics.show.subscribe"), forem.subscribe_forum_topic_path(@forum, @topic), :method => :post, :class => "btn btn-success just-button" %>
+        <% else %>
+            <%= link_to t("forem.topics.show.unsubscribe"), forem.unsubscribe_forum_topic_path(@forum, @topic), :method => :post, :class => "btn btn-danger just-button" %>
+        <% end %>
+    <% end %>
+  </div>
+    <div class="topic-name">
+    <%= forem_emojify(topic.subject) %>
+    </div>
+    <span class="topic-underline-links"><%= link_to t('forem.forum.forums'), forem.forums_path %> &raquo; <%= link_to forem_emojify(topic.forum.title), [forem, topic.forum] %></span>
+</div>
+
+
+
