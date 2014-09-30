@@ -30,8 +30,8 @@
   <td class='byline'>
     <%= new_since_last_view_text(topic) %>
     <div class='forum-subject'><%= link_to forem_emojify(topic.subject), forem.forum_topic_path(@forum, topic) %></div>
-    <div class='started-by' style="color: #6e6e6e; overflow: hidden; padding-left: 10px; max-height: 18px;">
-        <%= relevant_posts(topic).first.text.html_safe %>
+    <div class='started-by' style="color: #6e6e6e; overflow: hidden; padding-left: 10px; max-height: 18px;text-transform: none; text-decoration: none;">
+        <%= strip_links strip_tags relevant_posts(topic).first.text %>
     </div>
   </td>
 

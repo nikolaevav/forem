@@ -9,6 +9,16 @@ module Forem
 
     belongs_to :category
 
+    has_attached_file :icon,
+                      :styles => {
+                          :thumb=> "60x60#",
+                          :small  => "100x100>"},
+                      default_style: :thumb,
+                      url: '/assets/forum/forum_icons/:id/:style/:basename.:extension',
+                      path: ':rails_root/public/assets/forum/forum_icons/:id/:style/:basename.:extension'
+    validates_attachment :icon,
+                         content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+
     has_many :topics,     :dependent => :destroy
     has_many :posts,      :through => :topics, :dependent => :destroy
     has_many :moderators, :through => :moderator_groups, :source => :group

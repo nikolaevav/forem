@@ -1,6 +1,9 @@
 <% if can?(:read, forum) %>
-  <tr class="forum <%= cycle("even", "even") %>">
-    <td style="width: 700px;">
+  <tr class="forum <%= cycle("even", "even") %>" style="height:60px;">
+    <td style="width: 40px;">
+      <%= image_tag(forum.icon.url(:original)) %>
+    </td>
+    <td style="width: 660px;">
       <div>
       <%= link_to forem_emojify(forum.title), forem.forum_path(forum), :class => "forum-listing-title" %>
         </div>

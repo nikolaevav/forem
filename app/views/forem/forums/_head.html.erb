@@ -4,9 +4,11 @@
 
   <div id='forum_topic_links' class='btn-group'>
     <div class="forum-name">
-      <%= link_to forem_emojify(forum.title)%>
+      <%= forem_emojify(forum.title)%>
     </div>
-    <span id='forum-description' class="forum-description-left forum-description" style="color: #9b9b9b;font-size:.9em;"><%= forem_format(forum.description) %></span>
+    <span id='forum-description' class="forum-description-left forum-description" style="color: #9b9b9b;font-size:.9em;">
+      <%= link_to t('forem.forum.forums'), forem.root_path %> &laquo; <i> <%= forem_format(forum.description) %> </i>
+    </span>
     <% if can? :moderate, @forum %>
         <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), :class => "btn btn-primary just-button", :style=>'width:250px;' %>
     <% end %>

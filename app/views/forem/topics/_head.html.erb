@@ -2,26 +2,29 @@
   <div style="float: right;">
     <!--Кнопка ответа на тему-->
     <% if @topic.can_be_replied_to? && can?(:reply, @topic) %>
-        <%= link_to t("forem.topics.show.reply"), forem.new_forum_topic_post_path(@forum, @topic), :class => "btn btn-primary just-button " %>
+        <%= link_to "", forem.new_forum_topic_post_path(@forum, @topic), :class => "btn btn-primary button-reply-topic ", :title=>t("forem.topics.show.reply") %>
+    <% end %>
+
+
+    <!--Кнопка подписки\отписки-->
+    <% if forem_user %>
+        <% if !@topic.subscriber?(forem_user.id) %>
+            <%= link_to "", forem.subscribe_forum_topic_path(@forum, @topic), :method => :post, :class => "btn btn-success button-subscribe-topic", :title=>t("forem.topics.show.subscribe") %>
+        <% else %>
+            <%= link_to "", forem.unsubscribe_forum_topic_path(@forum, @topic), :method => :post, :class => "btn btn-danger button-unsubscribe-topic", :title=>t("forem.topics.show.unsubscribe") %>
+        <% end %>
     <% end %>
 
     <!--Кнопка удаления темы-->
     <% if @topic.user == forem_user || forem_admin? %>
-        <%= link_to t("forem.topics.show.delete"), forem.forum_topic_path(@forum, @topic), :method => :delete, data: { :confirm => t("are_you_sure") }, :class => "btn btn-danger just-button" %>
+        <%= link_to "", forem.forum_topic_path(@forum, @topic), :method => :delete, data: { :confirm => t("are_you_sure") }, :class => "btn btn-danger button-delete-topic", :title=>t("forem.topics.show.delete") %>
     <% end %>
-    <!--Кнопка подписки\отписки-->
-    <% if forem_user %>
-        <% if !@topic.subscriber?(forem_user.id) %>
-            <%= link_to t("forem.topics.show.subscribe"), forem.subscribe_forum_topic_path(@forum, @topic), :method => :post, :class => "btn btn-success just-button" %>
-        <% else %>
-            <%= link_to t("forem.topics.show.unsubscribe"), forem.unsubscribe_forum_topic_path(@forum, @topic), :method => :post, :class => "btn btn-danger just-button" %>
-        <% end %>
-    <% end %>
+
   </div>
     <div class="topic-name">
     <%= forem_emojify(topic.subject) %>
     </div>
-    <span class="topic-underline-links"><%= link_to t('forem.forum.forums'), forem.forums_path %> &raquo; <%= link_to forem_emojify(topic.forum.title), [forem, topic.forum] %></span>
+    <span class="topic-underline-links"><%= link_to t('forem.forum.forums'), forem.forums_path %> &laquo; <%= link_to forem_emojify(topic.forum.title), [forem, topic.forum] %> &laquo;</span>
 </div>
 
 

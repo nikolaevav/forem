@@ -143,10 +143,10 @@ ru:
         'false': Тема откреплена.
     topics:
       show:
-        reply: Ответить
-        delete: Удалить
-        subscribe: Подписаться
-        unsubscribe: Отписаться
+        reply: Ответить на тему
+        delete: Удалить тему
+        subscribe: Подписаться на тему
+        unsubscribe: Отписаться от темы
         reply_to_topic: Ответить
         pending_review: Эта тема ожидает проверки. Только автор темы и модератор могут её просмотреть.
         hide:
