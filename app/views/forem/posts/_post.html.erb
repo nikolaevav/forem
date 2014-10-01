@@ -25,7 +25,8 @@
             <%= link_to_if Forem.user_profile_links, post.user.forem_name, [main_app, post.user] %>
           <% end %>
         </div>
-        <div class='icon'><%= forem_avatar(post.user, :size => 60) %></div>
+        <div class='user-avatar-big' style="background: url(<%=post.user.user_adjustment.avatar.url(:large)%>) no-repeat left center">
+        </div>
       </div>
 
       <div class='contents col-md-7'>
