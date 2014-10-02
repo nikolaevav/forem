@@ -1,5 +1,4 @@
-<fieldset style="border:1px dotted #d3d1d1; border-radius: 5px;">
-<legend><span class="legend-title"><%= t("forem.topic.new") %></span></legend>
+<span class="legend-title"><%= t("forem.topic.new") %></span>
 <%= simple_form_for [forem, @forum, @topic] do |f| %>
 
     <%= f.text_field :subject, :required=>"required", :class => "topic-name-input required", :placeholder=>t("forem.general.topic"), :style=>"height: 31px;font-size: 1.2em;" %>
@@ -13,5 +12,3 @@
     <%= f.submit :class => "btn btn-primary review-submit-button", :style=>"float:none; border-radius:5px; width:200px;" %>
   </div>
 <% end %>
-
-  </fieldset>

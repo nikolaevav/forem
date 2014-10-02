@@ -1,18 +1,13 @@
-<%= f.text_area :text, :class => "field col-md-12 jqte-test" %>
+<%= f.text_area :text, :class => "field col-md-12" , :id=>"markItUp"%>
 
 <% if params[:reply_to_id] %>
   <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
 <% end %>
 
 
-<script type="text/javascript" charset="utf-8">
-    $('.jqte-test').jqte();
+<script type="text/javascript" >
 
-    // settings of status
-    var jqteStatus = true;
-    $(".status").click(function()
-    {
-        jqteStatus = jqteStatus ? false : true;
-        $('.jqte-test').jqte({"status" : jqteStatus})
-    });
+
+        $("#markItUp").markItUp(mySettings);
+
 </script>
