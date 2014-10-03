@@ -59,5 +59,7 @@
   <td class='views-count text-center'><%= topic.views_count %></td>
 
   <!--Иконки в таблице-->
-  <td class='views-count text-center'><%= relevant_posts(topic).first.user.forem_name %></td>
+  <td class='views-count td-user-block'>
+    <div class='user-avatar-middle' style="background: url(<%= relevant_posts(topic).first.user.personal_adjustments.avatar_link(:middle) %>) no-repeat left center" title="<%=t("started_by")+": "+relevant_posts(topic).first.user.forem_name %>"></div>
+  </td>
 </tr>
