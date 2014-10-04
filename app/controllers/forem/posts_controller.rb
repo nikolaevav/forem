@@ -57,6 +57,10 @@ module Forem
 
     private
 
+    def accurate_title
+      @title = t("forem.forums.index.forum")+" - "+t("forem.topic.reply-to")+" "+ @topic.subject
+    end
+
     def post_params
       params.require(:post).permit(:text, :reply_to_id)
     end

@@ -94,6 +94,20 @@ module Forem
     end
 
     private
+
+    def accurate_title
+
+
+      if @forum && @topic.subject.nil?
+        @title = t("forem.topic.new-topic")+ @forum.name
+      else
+       @forum && @topic
+        @title = @forum.name + " - " +@topic.subject
+      end
+
+
+    end
+
     def find_forum
       @forum = Forem::Forum.friendly.find(params[:forum_id])
       authorize! :read, @forum

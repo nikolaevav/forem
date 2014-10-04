@@ -110,6 +110,7 @@ en:
         no_option_selected: No moderation option was selected.
       received_reply: A topic you have subscribed to has received a reply.
       reply: Reply
+      reply-to: 'Answer topic:'
       quote: Quote
       delete: Delete
       created: This topic has been created.
@@ -122,6 +123,7 @@ en:
       not_updated: This topic could not be updated.
       subscribed: You have subscribed to this topic.
       unsubscribed: You have unsubscribed from this topic.
+      new-topic: 'Create new topic to: '
       none: There are no topics in this forum currently.
       links:
         new: New topic

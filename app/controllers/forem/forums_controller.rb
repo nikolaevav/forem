@@ -7,10 +7,12 @@ module Forem
       @categories = Forem::Category.all
     end
 
+
+
     def show
       authorize! :show, @forum
       register_view
-      
+
       @topics = if forem_admin_or_moderator?(@forum)
         @forum.topics
       else
@@ -32,5 +34,14 @@ module Forem
     def register_view
       @forum.register_view_by(forem_user)
     end
+
+    def accurate_title
+      if !@forum.nil?
+        @title = t("forem.forums.index.forum") +" - "+ @forum.name
+      else
+        @title = t("forem.forums.index.forum")
+      end
+    end
+
   end
 end
