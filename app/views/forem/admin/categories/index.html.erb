@@ -8,6 +8,7 @@
       <th><%= t('edit', :scope => 'forem.admin.categories') %></th>
       <th><%= t('delete', :scope => 'forem.admin.categories') %></th>
       <th><%= t('category', :scope => 'forem.admin.categories') %></th>
+      <th><%= t('order', :scope => 'forem.admin.categories') %></th>
 
     </tr>
   </thead>
@@ -19,6 +20,9 @@
         data: { :confirm => t("delete_confirm", :scope => 'forem.admin.categories') }, :class => "btn btn-danger" %></td>
         <td>
           <%= forem_emojify(category.name) %>
+        </td>
+        <td>
+          <%= forem_emojify(category.sort_field) %>
         </td>
       </tr>
     <% end %>
