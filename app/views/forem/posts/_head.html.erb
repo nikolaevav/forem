@@ -3,11 +3,7 @@
   <!--<h2><%= link_to t('forem.forum.forums'), forem.root_path %> &raquo; <%= link_to forem_emojify(forum.category), [forem, forum.category] %> &raquo; <%= link_to forem_emojify(forum.title), [forem, forum] %></h2>-->
 
   <div id='forum_topic_links' class='btn-group'>
-    <% if @topic %>
-        <a class="back-forum-button" href="<%= forem.forum_path(forum) %>" title="<%=t('forem.topic.links.back')%><%= forem_emojify(forum.title)%>"></a>
-    <% else %>
-        <a class="back-forum-button" href="<%= forem.root_path %>" title="<%=t('forem.topic.links.back')%><%=t('forem.forum.forums')%>"></a>
-    <%end%>
+    <%= link_to "", :back, :class=> "back-forum-button", :title=>t('forem.topic.links.back')+forem_emojify(@topic.subject)%>
     <div class="forum-name">
       <%= forem_emojify(forum.title)%>
     </div>
@@ -31,5 +27,3 @@
 
   </div>
 </div>
-
-<div class="forum-horizontal-line"></div>

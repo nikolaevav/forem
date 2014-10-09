@@ -128,6 +128,7 @@ en:
       links:
         new: New topic
         back_to_topics: Back to topics
+        back: "Back to: "
         edit: Edit topic
       not_found: The topic you are looking for could not be found.
       hidden:

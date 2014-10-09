@@ -21,6 +21,7 @@
     <% end %>
 
   </div>
+    <%= link_to "", [forem, topic.forum], :class=> "back-forum-button", :title=>t('forem.topic.links.back')+forem_emojify(topic.forum.title)%>
     <div class="topic-name">
     <%= forem_emojify(topic.subject) %>
     </div>
