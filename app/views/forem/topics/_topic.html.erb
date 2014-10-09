@@ -12,6 +12,7 @@
       <span class='topic-hidden forum-icon'></span>
     <% end %>
     <% if forem_user && view = topic.view_for(forem_user) %>
+
       <% if topic.posts.exists?(["created_at > ?", view.updated_at]) %>
         <span class='new-posts forum-icon'></span>
       <%else%>
@@ -19,6 +20,7 @@
                 <span class='just-post forum-icon'></span>
             <%end%>
       <% end %>
+
     <%else%>
         <%if !topic.pinned?%>
             <span class='just-post forum-icon'></span>

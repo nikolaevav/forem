@@ -1,3 +1,23 @@
+<div class="activity-block">
+    <div class="activity-block-left">
+      <span>Последние обсуждаемые темы форума:</span>
+      <ul>
+          <%@last_topics.each do |topic|%>
+            <li> <%= link_to topic.subject, forem.forum_topic_path(get_forum_by_topic(topic), topic) -%></li>
+          <%end%>
+      </ul>
+    </div>
+
+    <div class="activity-block-right">
+
+      <ul>
+        <%@last_topics.each do |topic|%>
+            <li><%=topic.subject%></li>
+        <%end%>
+      </ul>
+    </div>
+</div>
+
 <div id='forums_container'>
   <!--<h1 id='forums_title'><%= t('.title') %></h1>-->
 

@@ -3,11 +3,13 @@ module Forem
     load_and_authorize_resource :class => 'Forem::Forum', :only => :show
     helper 'forem/topics'
 
+    helper_method :get_forum_by_topic
+
     def index
       @categories = Forem::Category.all.order(:sort_field => :desc)
+      @last_topics = Forem::Topic.all.order(:updated_at => :desc).limit(9)
+      @users = Spree::UserAdjustment.all.sample(6)
     end
-
-
 
     def show
       authorize! :show, @forum
@@ -28,6 +30,10 @@ module Forem
         format.html
         format.atom { render :layout => false }
       end
+    end
+
+    def get_forum_by_topic(topic)
+      @forum = Forem::Forum.find(topic.forum_id)
     end
 
     private
