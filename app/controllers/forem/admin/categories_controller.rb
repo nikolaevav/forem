@@ -4,7 +4,7 @@ module Forem
       before_filter :find_category, :only => [:edit, :update, :destroy]
 
       def index
-        @categories = Forem::Category.all
+        @categories = Forem::Category.all.order(:sort_field => :desc)
       end
 
       def new
@@ -35,7 +35,7 @@ module Forem
       private
 
       def category_params
-        params.require(:category).permit(:name)
+        params.require(:category).permit(:name, :sort_field)
       end
 
       def find_category
