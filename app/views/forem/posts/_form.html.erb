@@ -1,4 +1,4 @@
-<%= f.text_area :text, :class => "field col-md-12" , :id=>"markItUp"%>
+<%= f.text_area :text, :class => "field col-md-12 jqte-test" %>
 
 <% if params[:reply_to_id] %>
   <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
@@ -6,8 +6,5 @@
 
 
 <script type="text/javascript" >
-
-
-        $("#markItUp").markItUp(mySettings);
-
+    $("#markItUp").markItUp(mySettings);
 </script>
