@@ -3,7 +3,7 @@
       <span><%=t("forem.general.last_activity")%></span>
       <ul>
           <%@last_topics.each do |topic|%>
-            <li> <%= link_to topic.subject, forem.forum_topic_path(get_forum_by_topic(topic), topic) -%></li>
+            <li> <%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> (<%=topic.posts.count%>) → <%=get_last_poster_name_in_topic(topic)%></li>
           <%end%>
       </ul>
     </div>
@@ -12,7 +12,7 @@
       <span><%=t("forem.general.last_topics_created")%></span>
       <ul>
         <%@last_topics_created.each do |topic|%>
-            <li><%= link_to topic.subject, forem.forum_topic_path(get_forum_by_topic(topic), topic) -%></li>
+            <li> <%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> (<%=topic.posts.count%>) → <%=topic.user.forem_name%></li>
         <%end%>
       </ul>
     </div>
