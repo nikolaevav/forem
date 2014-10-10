@@ -19,6 +19,10 @@ module Forem
       end
     end
 
+    def has_new_posts(topic, view)
+      @has = topic.posts.exists?(["created_at > ?", view.updated_at])
+    end
+
     def relevant_posts(topic)
       posts = topic.posts.by_created_at
       if forem_admin_or_moderator?(topic.forum)

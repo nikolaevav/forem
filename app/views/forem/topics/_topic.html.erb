@@ -46,7 +46,7 @@
   <td class='posts-count text-center'>
 
     <% if forem_user && view = topic.view_for(forem_user) %>
-        <% if topic.posts.exists?(["created_at > ?", view.updated_at]) %>
+        <% if has_new_posts(topic, view) %>
             <span class="posts-count-selection"><%= relevant_posts(topic).count %></span>
         <%else%>
             <%= relevant_posts(topic).count %>
