@@ -1,6 +1,8 @@
 ru:
   forem:
     general:
+      last_activity: "Последние обсуждаемые темы форума:"
+      last_topics_created: "Последние открытые темы:"      
       deleted: [удалено]
       forum: Форум
       topics: Темы

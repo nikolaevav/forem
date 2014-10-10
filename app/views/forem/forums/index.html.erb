@@ -1,6 +1,6 @@
 <div class="activity-block">
     <div class="activity-block-left">
-      <span>Последние обсуждаемые темы форума:</span>
+      <span><%=t("forem.general.last_activity")%></span>
       <ul>
           <%@last_topics.each do |topic|%>
             <li> <%= link_to topic.subject, forem.forum_topic_path(get_forum_by_topic(topic), topic) -%></li>
@@ -9,18 +9,16 @@
     </div>
 
     <div class="activity-block-right">
-
+      <span><%=t("forem.general.last_topics_created")%></span>
       <ul>
-        <%@last_topics.each do |topic|%>
-            <li><%=topic.subject%></li>
+        <%@last_topics_created.each do |topic|%>
+            <li><%= link_to topic.subject, forem.forum_topic_path(get_forum_by_topic(topic), topic) -%></li>
         <%end%>
       </ul>
     </div>
 </div>
 
 <div id='forums_container'>
-  <!--<h1 id='forums_title'><%= t('.title') %></h1>-->
-
   <%= render @categories %>
 </div>
 

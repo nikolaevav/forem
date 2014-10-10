@@ -1,6 +1,8 @@
 en:
   forem:
     general:
+      last_activity: "Last updated topics:"   
+      last_topics_created: "Last opened topics:"    
       deleted: [deleted]
       forum: Forum
       topics: Topics

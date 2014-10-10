@@ -8,6 +8,7 @@ module Forem
     def index
       @categories = Forem::Category.all.order(:sort_field => :desc)
       @last_topics = Forem::Topic.all.order(:updated_at => :desc).limit(9)
+      @last_topics_created = Forem::Topic.all.order(:created_at => :desc).limit(9)
       @users = Spree::UserAdjustment.all.sample(6)
     end
 
