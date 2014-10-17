@@ -26,6 +26,10 @@ module Forem
                        :foreign_key => "reply_to_id",
                        :dependent   => :nullify
 
+    has_many :post_assets, :class_name => "PostAsset",
+                           :foreign_key => "post_id",
+                           :dependent => :destroy
+
     validates :text, :presence => true
 
     delegate :forum, :to => :topic

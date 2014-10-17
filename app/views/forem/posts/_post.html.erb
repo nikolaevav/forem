@@ -45,6 +45,14 @@
           </div>
         <% end %>
 
+        <% if !post.post_assets.nil? %>
+
+            <%post.post_assets.each do |image|%>
+                <%= image.post_id%> <%= image_tag image.asset.url(:original)%>
+            <%end%>
+
+        <% end %>
+
         <% if forem_user %>
           <div class='post-button-group'>
             <% if can?(:reply, post.topic) %>
@@ -61,6 +69,15 @@
                 <%= link_to t('delete', :scope => 'forem.topic'), forem.forum_topic_post_path(post.forum, post.topic, post), :method => :delete, data: { :confirm => t("are_you_sure") }, :class => "btn btn-post-delete" %>
               <% end %>
             <% end %>
+
+
+
+            <%= form_tag add_post_image_path , :multipart => true do |f| -%>
+                <%=hidden_field_tag 'post_id', post.id -%>
+                <%=file_field_tag(:asset)%>
+                <div> <%=submit_tag 'Add'%></div>
+            <% end -%>
+
           </div>
         <% end %>
       </div>

@@ -62,7 +62,7 @@ module Forem
     end
 
     def post_params
-      params.require(:post).permit(:text, :reply_to_id)
+      params.require(:post).permit(:text, :reply_to_id, :asset)
     end
 
     def authorize_reply_for_topic!

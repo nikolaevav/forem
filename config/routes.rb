@@ -48,4 +48,7 @@ Forem::Engine.routes.draw do
       end
     end
   end
+
+  post '/add-post-image', :to=>'post_assets#add_image'
+
 end
