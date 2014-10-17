@@ -179,6 +179,8 @@ ru:
       deleted_with_topic: Ответ в теме удален. Тема также удалена.
       cannot_delete: Вы не можете удалить чужой ответ.
       in_reply_to: В ответ на сообщение
+      post-images: Прикрепленные изображения
+      add-post-images: Прикрепить изображения
       cannot_quote_deleted_post: Сообщение, которое вы хотите процитировать, не существует.
     posts:
       moderation:

@@ -9,6 +9,7 @@ class CreateForemPostAssets < ActiveRecord::Migration
         t.datetime :created_at
         t.datetime :updated_at
         t.integer :post_id
+        t.integer :topic_id
 
         t.timestamps
       end

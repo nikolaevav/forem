@@ -39,23 +39,38 @@
             <%= forem_format(post.text) %>
         </div>
 
+
+
+        <% if !post.post_assets.nil? && post.post_assets.length>0  %>
+            <span style="display: inline-block; padding-left: 15px; color: #9b9b9b; text-transform: uppercase; font-size: 0.8em;"><%=t("forem.post.post-images")%></span>
+
+            <div class="post-images-block">
+
+            <%post.post_assets.each do |image|%>
+                <%rel = "iLoad|"+post.id.to_s%>
+                <%= link_to image.asset.url(:original), :rel=>rel do%>
+                      <%=image_tag image.asset.url(:postimage)%>
+                <%end%>
+            <%end%>
+            </div>
+        <% end %>
+
         <% if post.reply_to %>
           <div class='in-reply-to'>
             <%= link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user.forem_name}", "#post-#{post.reply_to.id}" %>
           </div>
         <% end %>
 
-        <% if !post.post_assets.nil? %>
 
-            <%post.post_assets.each do |image|%>
-                <%= image.post_id%> <%= image_tag image.asset.url(:original)%>
-            <%end%>
-
-        <% end %>
 
         <% if forem_user %>
           <div class='post-button-group'>
-            <% if can?(:reply, post.topic) %>
+            <% if can?(:edit_post, post.topic.forum) %>
+
+                <%=link_to "+", "javascript:void(0);",:class=>"button-add-image", :id=>"button-add-image", :onclick=>"openForm();"%>
+
+            <%end%>
+                <% if can?(:reply, post.topic) %>
               <% if post.topic.can_be_replied_to? %>
                 <%= link_to t('reply', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id), :class => "btn btn-primary button-topic-reply" %>
                 <%= link_to t('quote', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id, :quote => true), :class => "btn btn-success button-topic-citata" %>
@@ -71,12 +86,12 @@
             <% end %>
 
 
-
-            <%= form_tag add_post_image_path , :multipart => true do |f| -%>
-                <%=hidden_field_tag 'post_id', post.id -%>
-                <%=file_field_tag(:asset)%>
-                <div> <%=submit_tag 'Add'%></div>
-            <% end -%>
+            <% if post.owner_or_admin?(forem_user) %>
+                <%= form_tag add_post_image_path , :multipart => true, :id=>"upload-post-image", :class=>"upload-post-image", :onchange=>"submitForm(this);", :title=>t("forem.post.add-post-images") do |f| -%>
+                    <%=hidden_field_tag 'post_id', post.id -%>
+                    <%=file_field_tag(:asset, :title=>t("forem.post.add-post-images"))%>
+                <% end -%>
+            <% end %>
 
           </div>
         <% end %>
@@ -84,3 +99,11 @@
     </div>
   </div>
 </div>
+
+<script>
+
+    $(document).ready(initIload());
+
+   // $('#button-add-image').onclick = openForm;
+
+</script>
