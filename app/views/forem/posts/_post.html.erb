@@ -65,12 +65,14 @@
 
         <% if forem_user %>
           <div class='post-button-group'>
-            <% if can?(:edit_post, post.topic.forum) %>
 
-                <%=link_to "+", "javascript:void(0);",:class=>"button-add-image", :id=>"button-add-image", :onclick=>"openForm();"%>
-
+            <% if post.owner_or_admin?(forem_user) %>
+                <% if can?(:edit_post, post.topic.forum) %>
+                    <%=link_to t("forem.post.add-post-images"), "javascript:void(0);",:class=>"button-add-image", :id=>"button-add-image", :onclick=>"openForm();"%>
+                <%end%>
             <%end%>
-                <% if can?(:reply, post.topic) %>
+
+            <% if can?(:reply, post.topic) %>
               <% if post.topic.can_be_replied_to? %>
                 <%= link_to t('reply', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id), :class => "btn btn-primary button-topic-reply" %>
                 <%= link_to t('quote', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id, :quote => true), :class => "btn btn-success button-topic-citata" %>
