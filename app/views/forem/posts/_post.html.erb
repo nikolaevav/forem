@@ -68,7 +68,8 @@
 
             <% if post.owner_or_admin?(forem_user) %>
                 <% if can?(:edit_post, post.topic.forum) %>
-                    <%=link_to t("forem.post.add-post-images"), "javascript:void(0);",:class=>"button-add-image", :id=>"button-add-image", :onclick=>"openForm();"%>
+                    <%button_select ='"#upload-post-image-field'+post.id.to_s+'"'%>
+                    <%=link_to t("forem.post.add-post-images"), "javascript:void(0);",:class=>"button-add-image", :id=>"button-add-image", :onclick=>"callFileFormSelect("+button_select+");"%>
                 <%end%>
             <%end%>
 
@@ -91,7 +92,8 @@
             <% if post.owner_or_admin?(forem_user) %>
                 <%= form_tag add_post_image_path , :multipart => true, :id=>"upload-post-image", :class=>"upload-post-image", :onchange=>"submitForm(this);", :title=>t("forem.post.add-post-images") do |f| -%>
                     <%=hidden_field_tag 'post_id', post.id -%>
-                    <%=file_field_tag(:asset, :title=>t("forem.post.add-post-images"))%>
+                    <%fieldId = "upload-post-image-field"+post.id.to_s %>
+                    <%=file_field_tag(:asset, :title=>t("forem.post.add-post-images"), :id=>fieldId, :style=>"display:none;")%>
                 <% end -%>
             <% end %>
 
@@ -105,7 +107,8 @@
 <script>
 
     $(document).ready(initIload());
-
-   // $('#button-add-image').onclick = openForm;
+    function callFileFormSelect(field){
+       $(field).trigger('click');
+    }
 
 </script>
