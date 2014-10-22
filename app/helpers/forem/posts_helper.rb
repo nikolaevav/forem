@@ -21,6 +21,10 @@ module Forem
       "#{request.ssl? ? 'https://secure' : 'http://www'}.gravatar.com/avatar/#{md5}?#{options.to_param}"
     end
 
+    def getPost(id)
+      @answer = Post.find(id);
+    end
+
     def default_gravatar
       image = Forem.default_gravatar_image
 

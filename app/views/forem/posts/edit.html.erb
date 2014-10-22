@@ -1,4 +1,4 @@
-<%= render :partial => 'head', :locals => { :forum => @topic.forum } %>
+<%= render :partial => 'head', :locals => { :forum => @topic.forum, :topic=>@topic  } %>
 <div class="forum-horizontal-line"></div>
 <div style="margin-top: 35px;">
 <span class="legend-title"><%= t("forem.post.edit-title", :post => @post) %></span>
@@ -10,3 +10,8 @@
     </div>
 <% end %>
     </div>
+
+<%= form_tag add_post_image_path , :multipart => true, :id=>"upload-post-image", :class=>"upload-post-image", :onchange=>"submitForm(this);", :title=>t("forem.post.add-post-images") do |f| -%>
+    <%=hidden_field_tag 'post_id', @post.id -%>
+    <%=file_field_tag(:asset, :title=>t("forem.post.add-post-images"), :id=>"upload-post-image-field", :style=>"display:none;")%>
+<% end -%>
