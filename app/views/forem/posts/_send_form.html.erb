@@ -1,0 +1,24 @@
+<div id="send-letter-form<%=post_object.user.id.to_s%>" class="reveal-modal">
+  <h1>Письмо пользователю</h1>
+  <%=form_tag "/send-letter" do%>
+      <%=hidden_field_tag 'to_id', post_object.user.id%>
+      <div style="display: inline-block;width: 100%;margin-bottom:15px;margin-top:10px;">
+        <%= text_field_tag 'title', nil, :placeholder=> 'Задайте тему...', :style=>"width:inherit; border-radius:5px;border-width:2px;"%>
+      </div>
+
+      <div style="display: inline-block;width: 100%;margin-bottom:15px;">
+         <%=text_area_tag 'content', nil, :style=>"width:inherit;border-radius:5px;border-width:2px;resize:none;height:150px"%>
+      </div>
+      <div style="display: inline-block;width: 100%;text-align: center;">
+        <%=submit_tag 'Послать', :style=>"border-radius:5px;width:145px;height:32px;font-size:1.1em;text-transform:uppercase;"%>
+      </div>
+  <%end%>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<script>
+    function sendLetter()
+    {
+        $("#send-letter-form<%=post_object.user.id.to_s%>").reveal();
+    }
+</script>

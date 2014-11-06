@@ -30,16 +30,26 @@
 
         <div class="post-username">
            <a href='#post-<%= post.id %>'><%= post_time_tag(post) %></a>
+
+          <div id="user-actions">
+            <ul id="actions-list">
+              <%if !(post.owner?(forem_user))%>
+                <li><a href="javascript:void(0)" onclick="sendLetter(this);" style="background: url('/assets/home/forum/send-mail.png') no-repeat left center"></a></li>
+              <%end%>
+              <li><a href="<%=post.user.profile_link%>" title="<%=t('forem.post.post-user-profile')%>" style="background: url('/assets/home/forum/view-profile.png') no-repeat left center"></a></li>
+            </ul>
+          </div>
         </div>
       </div>
+
+
+
 
       <div class='post-content-block'>
 
         <div class="post-content-text">
             <%= forem_format(post.text) %>
         </div>
-
-
 
         <% if !post.post_assets.nil? && post.post_assets.length>0  %>
             <span style="display: inline-block; padding-left: 15px; color: #9b9b9b; text-transform: uppercase; font-size: 0.8em;"><%=t("forem.post.post-images")%></span>
@@ -103,6 +113,8 @@
     </div>
   </div>
 </div>
+
+<%=render :partial =>'forem/posts/send_form', :locals=>{:post_object => post}%>
 
 <script>
 

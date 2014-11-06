@@ -176,6 +176,7 @@ en:
       in_reply_to: In reply to
       post-images: Pinned images
       add-post-images: Pin image
+      post-user-profile: View profile page
       cannot_quote_deleted_post: The post you tried to quote does not exist anymore.
     posts:
       moderation:

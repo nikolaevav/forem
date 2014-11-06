@@ -181,6 +181,7 @@ ru:
       in_reply_to: В ответ на сообщение
       post-images: Прикрепленные изображения
       add-post-images: Прикрепить изображения
+      post-user-profile: Посмотреть профиль
       cannot_quote_deleted_post: Сообщение, которое вы хотите процитировать, не существует.
     posts:
       moderation:

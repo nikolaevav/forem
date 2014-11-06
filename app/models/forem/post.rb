@@ -90,6 +90,10 @@ module Forem
       user == other_user || other_user.forem_admin?
     end
 
+    def owner?(other_user)
+      user == other_user
+    end
+
     protected
 
     def subscribe_replier
