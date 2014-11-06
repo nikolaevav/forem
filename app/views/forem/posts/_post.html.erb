@@ -113,9 +113,9 @@
     </div>
   </div>
 </div>
-
-<%=render :partial =>'forem/posts/send_form', :locals=>{:post_object => post}%>
-
+    <%if !(post.owner?(forem_user))%>
+        <%=render :partial =>'forem/posts/send_form', :locals=>{:post_object => post}%>
+    <%end%>
 <script>
 
     $(document).ready(initIload());
