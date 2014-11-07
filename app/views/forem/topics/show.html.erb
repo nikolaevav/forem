@@ -1,6 +1,6 @@
 
 <%if forem_user%>
-    <%=render :partial =>'forem/posts/send_form'%>\
+    <%=render :partial =>'forem/posts/send_form'%>
 <%end%>
 <div id='topic' class='<%= 'un' unless @topic.locked? %>locked'>
   <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
