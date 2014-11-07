@@ -1,3 +1,7 @@
+
+<%if forem_user%>
+    <%=render :partial =>'forem/posts/send_form'%>\
+<%end%>
 <div id='topic' class='<%= 'un' unless @topic.locked? %>locked'>
   <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
 
@@ -33,6 +37,5 @@
   <div id='posts'>
     <%= render :partial => "forem/posts/post", :collection => @posts %>
   </div>
-
   <%= forem_pages_widget(@posts) %>
 </div>

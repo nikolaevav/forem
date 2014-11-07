@@ -1,7 +1,7 @@
-<div id="send-letter-form<%=post_object.user.id.to_s%>" class="reveal-modal">
+<div id="send-letter-form" class="reveal-modal">
   <h1>Письмо пользователю</h1>
-  <%=form_tag "/send-letter" do%>
-      <%=hidden_field_tag 'to_id', post_object.user.id%>
+  <%=form_tag "/send-letter", :id=>"send-form" do%>
+      <%=hidden_field_tag 'to_id'%>
       <div style="display: inline-block;width: 100%;margin-bottom:15px;margin-top:10px;">
         <%= text_field_tag 'title', nil, :placeholder=> 'Задайте тему...', :style=>"width:inherit; border-radius:5px;border-width:2px;"%>
       </div>
@@ -17,8 +17,9 @@
 </div>
 
 <script>
-    function sendLetter()
+    function sendLetter(id)
     {
-        $("#send-letter-form<%=post_object.user.id.to_s%>").reveal();
+        $("#to_id").val(id);
+        $("#send-letter-form").reveal();
     }
 </script>

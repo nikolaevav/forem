@@ -33,16 +33,14 @@
 
           <div id="user-actions">
             <ul id="actions-list">
-              <%if !(post.owner?(forem_user))%>
-                <li><a href="javascript:void(0)" onclick="sendLetter(this);" style="background: url('/assets/home/forum/send-mail.png') no-repeat left center"></a></li>
+              <%if !(post.owner?(forem_user)) && forem_user%>
+                <li><a href="javascript:void(0)" onclick="sendLetter(<%=post.user.id%>);" style="background: url('/assets/home/forum/send-mail.png') no-repeat left center"></a></li>
               <%end%>
               <li><a href="<%=post.user.profile_link%>" title="<%=t('forem.post.post-user-profile')%>" style="background: url('/assets/home/forum/view-profile.png') no-repeat left center"></a></li>
             </ul>
           </div>
         </div>
       </div>
-
-
 
 
       <div class='post-content-block'>
@@ -113,9 +111,6 @@
     </div>
   </div>
 </div>
-    <%if !(post.owner?(forem_user))%>
-        <%=render :partial =>'forem/posts/send_form', :locals=>{:post_object => post}%>
-    <%end%>
 <script>
 
     $(document).ready(initIload());
