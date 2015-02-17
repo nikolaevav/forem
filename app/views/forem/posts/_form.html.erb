@@ -35,7 +35,8 @@
 <% if !post.nil? && post.owner_or_admin?(forem_user) %>
     <script>
         var withPictureSettings = htmlSettings = {
-            onShiftEnter:	{keepDefault:false, replaceWith:'<br />\n'},
+            onShiftEnter:	{keepDefault:false, replaceWith:'<br/><br/>\n'},
+            onEnter:	{keepDefault:true, replaceWith:'<br/>\n'},
             onCtrlEnter:	{keepDefault:false, openWith:'\n<p>', closeWith:'</p>\n'},
             onTab:			{keepDefault:false, openWith:'	 '},
             markupSet: [
@@ -72,7 +73,8 @@
     <script>
 
         var withoutPictureSettings = htmlSettings = {
-            onShiftEnter:	{keepDefault:false, replaceWith:'<br />\n'},
+            onShiftEnter:	{keepDefault:false, replaceWith:'<br/><br/>\n'},
+            onEnter:	{keepDefault:true, replaceWith:'<br/>\n'},
             onCtrlEnter:	{keepDefault:false, openWith:'\n<p>', closeWith:'</p>\n'},
             onTab:			{keepDefault:false, openWith:'	 '},
             markupSet: [
