@@ -1,5 +1,8 @@
 module Forem
   module TopicsHelper
+
+
+
     def link_to_latest_post(topic)
       post = relevant_posts(topic).last
       text = "#{time_ago_in_words(post.created_at)} #{t("ago_by")} #{post.user.forem_name}"
@@ -38,6 +41,12 @@ module Forem
       content_tag("time", datetime: post.created_at.to_s(:db)) do
         "#{time_ago_in_words(post.created_at)} #{t(:ago)}"
       end
+    end
+
+    def last_poster_name_in_topic(topic)
+      @forum = Forem::Forum.find(topic.forum_id)
+      @last_post = @forum.last_post_for(forem_user)
+      @name = @last_post.user.forem_name
     end
 
   end

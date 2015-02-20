@@ -6,12 +6,12 @@
 
             <%if forem_user && view = topic.view_for(forem_user)%>
                 <% if has_new_posts(topic, view) %>
-                    <li><b><%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> <font color="#ff6347">(<%=topic.posts.count%>)</font> → <%=get_last_poster_name_in_topic(topic)%></b></li>
+                    <li><b><%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> <font color="#ff6347">(<%=topic.posts.count%>)</font> → <%=last_poster_name_in_topic(topic)%></b></li>
                 <%else%>
-                    <li> <%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> (<%=topic.posts.count%>) → <%=get_last_poster_name_in_topic(topic)%></li>
+                    <li> <%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> (<%=topic.posts.count%>) → <%=last_poster_name_in_topic(topic)%></li>
                 <% end %>
             <%else%>
-                <li> <%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> (<%=topic.posts.count%>) → <%=get_last_poster_name_in_topic(topic)%></li>
+                <li> <%= link_to topic.subject, forem.forum_topic_path(topic.forum, topic) -%> (<%=topic.posts.count%>) → <%=last_poster_name_in_topic(topic)%></li>
             <%end%>
 
 

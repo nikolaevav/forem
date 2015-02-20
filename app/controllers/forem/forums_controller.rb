@@ -2,7 +2,6 @@ module Forem
   class ForumsController < Forem::ApplicationController
     load_and_authorize_resource :class => 'Forem::Forum', :only => :show
     helper 'forem/topics'
-    helper_method :get_last_poster_name_in_topic
 
     def index
       @categories = Forem::Category.all.order(:sort_field => :desc)
@@ -30,12 +29,6 @@ module Forem
         format.html
         format.atom { render :layout => false }
       end
-    end
-
-    def get_last_poster_name_in_topic(topic)
-      @forum = Forem::Forum.find(topic.forum_id)
-      @last_post = @forum.last_post_for(forem_user)
-      @name = @last_post.user.forem_name
     end
 
     private
