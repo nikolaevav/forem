@@ -11,8 +11,8 @@ module Forem
                           },
 
                       },
-                      :url => '/assets/forum/posts/images/:id/:style/:basename.:extension',
-                      :path => ':rails_root/public/assets/forum/posts/images/:id/:style/:basename.:extension'
+                      :url => '/system/forum/posts/images/:id/:style/:basename.:extension',
+                      :path => ':rails_root/public/system/forum/posts/images/:id/:style/:basename.:extension'
 
     validates_attachment_size :asset, :less_than => 3.megabytes
     validates_attachment :asset,
