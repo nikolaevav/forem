@@ -14,8 +14,8 @@ module Forem
                           :thumb=> "60x60#",
                           :small  => "100x100>"},
                       default_style: :thumb,
-                      url: '/assets/forum/forum_icons/:id/:style/:basename.:extension',
-                      path: ':rails_root/public/assets/forum/forum_icons/:id/:style/:basename.:extension'
+                      url: '/system/forum/forum_icons/:id/:style/:basename.:extension',
+                      path: ':rails_root/public/system/forum/forum_icons/:id/:style/:basename.:extension'
     validates_attachment :icon,
                          content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
 
