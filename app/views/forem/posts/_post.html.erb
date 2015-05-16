@@ -34,9 +34,9 @@
           <div id="user-actions">
             <ul id="actions-list">
               <%if !(post.owner?(forem_user)) && forem_user%>
-                <li><a href="javascript:void(0)" onclick="sendLetter(<%=post.user.id%>);" style="background: url('/assets/home/forum/send-mail.png') no-repeat left center"></a></li>
+                <li><a href="javascript:void(0)" onclick="sendLetter(<%=post.user.id%>);" style="<%=asset_path('home/forum/send-mail.png')%> no-repeat left center"></a></li>
               <%end%>
-              <li><a href="<%=post.user.profile_link%>" title="<%=t('forem.post.post-user-profile')%>" style="background: url('/assets/home/forum/view-profile.png') no-repeat left center"></a></li>
+              <li><a href="<%=post.user.profile_link%>" title="<%=t('forem.post.post-user-profile')%>" style="background: <%=asset_path('home/forum/view-profile.png')%> no-repeat left center"></a></li>
             </ul>
           </div>
         </div>
